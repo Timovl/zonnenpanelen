@@ -5,5 +5,5 @@
 @endsection
 @section('main')
     <h1>Zonnepanelen Team JM1</h1>
-    <p>Welkom op de home page</p>
+    <p>Welkom @if(auth()->user()) {{auth()->user()->name}} @endif op de home page!</p>
 @endsection
