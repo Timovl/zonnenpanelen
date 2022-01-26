@@ -65811,6 +65811,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
 
+$('nav i.fas').addClass('fa-fw mr-1');
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

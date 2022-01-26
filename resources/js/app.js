@@ -13,3 +13,4 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+$('nav i.fas').addClass('fa-fw mr-1');
