@@ -24,7 +24,7 @@
                         {{ auth()->user()->name }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="/user/profile"><i class="fas fa-user-cog"></i>Update Profile</a>
+                        <a class="dropdown-item" href="/user/profile"><i class="fas fa-user-cog"></i>My dashbord</a>
                         <a class="dropdown-item" href="/user/password"><i class="fas fa-key"></i>New Password</a>
                         <a class="dropdown-item" href="/user/history"><i class="fas fa-box-open"></i>Order history</a>
                         <div class="dropdown-divider"></div>
@@ -32,13 +32,7 @@
                             @csrf
                             <button type="submit" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>Logout</button>
                         </form>
-                        @if(auth()->user()->admin)
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/admin/genres"><i class="fas fa-microphone-alt"></i>Genres</a>
-                            <a class="dropdown-item" href="/admin/records"><i class="fas fa-compact-disc"></i>Records</a>
-                            <a class="dropdown-item" href="/admin/users"><i class="fas fa-users-cog"></i>Users</a>
-                            <a class="dropdown-item" href="/admin/orders"><i class="fas fa-box-open"></i>Orders</a>
-                        @endif
+
                     </div>
                 </li>
         @endauth
