@@ -1,7 +1,8 @@
 <?php
     $year = date("Y");
     $winst = 745.23;
-    $verbruik = 487
+    $verbruik = 487;
+    $vuur = false
 ?>
 
 @extends('layouts.layout')
@@ -24,6 +25,12 @@
             <div class="card-body">
                 <h5 class="card-title">Totale verbruik</h5>
                 <p class="card-text">Het verbruik bedraagt {{ $verbruik }} kwh</p>
+            </div>
+        </div>
+        <div class="card mt-5" style="width: 18rem; @if($vuur == true) background-color: lightgreen @else background-color: red @endif">
+            <div class="card-body">
+                <h5 class="card-title">Vuur</h5>
+                <p class="card-text">Het het vuur staat @if($vuur == true) aan @else uit @endif</p>
             </div>
         </div>
     </div>
