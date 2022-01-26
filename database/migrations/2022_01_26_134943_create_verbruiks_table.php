@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFiresTable extends Migration
+class CreateVerbruiksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateFiresTable extends Migration
      */
     public function up()
     {
-        Schema::create('fires', function (Blueprint $table) {
+        Schema::create('verbruiks', function (Blueprint $table) {
             $table->id();
-            $table->boolean('on');
+            $table->float('verbruik');
             $table->timestamps();
         });
-
-        DB::table('fires')->insert(
+        DB::table('verbruiks')->insert(
             [
-                ['on' => false],
-                ['on' => true],
-                ['on' => false]
+                ['verbruik' => 555.333],
+                ['verbruik' => 254],
+                ['verbruik' => 1084]
             ]
         );
     }
@@ -35,6 +34,6 @@ class CreateFiresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fires');
+        Schema::dropIfExists('verbruiks');
     }
 }

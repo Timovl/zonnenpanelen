@@ -1,8 +1,9 @@
 <?php
     $year = date("Y");
-    $winst = 745.23;
-    $verbruik = 487;
-    $vuur = false
+    $winst = \App\Winst::latest('id')->get();
+    $verbruik = \App\Verbruik::latest('id')->get();
+    $vuurstatus = \App\Fire::latest('id')->get();
+    $vuur = $vuurstatus[0]->on;
 ?>
 
 @extends('layouts.layout')
@@ -17,14 +18,14 @@
         <div class="card" style="width: 18rem; background-color: lightgreen">
             <div class="card-body">
                 <h5 class="card-title">Totale winst {{ $year }}</h5>
-                <p class="card-text">De totale winst bedraagt {{ $winst }}€</p>
+                <p class="card-text">De totale winst bedraagt {{ $winst[0]->winst }}€</p>
             </div>
         </div>
         {{--    totaal verbruik--}}
         <div class="card mt-5" style="width: 18rem; background-color: lightgreen">
             <div class="card-body">
                 <h5 class="card-title">Totale verbruik</h5>
-                <p class="card-text">Het verbruik bedraagt {{ $verbruik }} kwh</p>
+                <p class="card-text">Het verbruik bedraagt {{ $verbruik[0]->verbruik }} kwh</p>
             </div>
         </div>
         <div class="card mt-5" style="width: 18rem; @if($vuur == true) background-color: lightgreen @else background-color: red @endif">

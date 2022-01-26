@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFiresTable extends Migration
+class CreateWinstsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateFiresTable extends Migration
      */
     public function up()
     {
-        Schema::create('fires', function (Blueprint $table) {
+        Schema::create('winsts', function (Blueprint $table) {
             $table->id();
-            $table->boolean('on');
+            $table->float('winst');
             $table->timestamps();
         });
-
-        DB::table('fires')->insert(
+        DB::table('winsts')->insert(
             [
-                ['on' => false],
-                ['on' => true],
-                ['on' => false]
+                ['winst' => 356.21],
+                ['winst' => 420.69],
+                ['winst' => 11.36]
             ]
         );
     }
@@ -35,6 +34,6 @@ class CreateFiresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fires');
+        Schema::dropIfExists('winsts');
     }
 }
