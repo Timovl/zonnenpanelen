@@ -26,6 +26,7 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="dashboard"><i class="fas fa-chart-line"></i> Mijn dashboard</a>
                         <a class="dropdown-item" href="weer"><i class="fas fa-temperature-high"></i> Weersverwachtingen</a>
+                        <a class="dropdown-item" href="edit"><i class="fas fa-user-edit"></i> Gebruiker aanpassen</a>
                         <div class="dropdown-divider"></div>
                         <form action="/logout" method="post">
                             @csrf

@@ -25,7 +25,9 @@ Route::post('dashboard', function () {
 Route::get('weer', function () {
     return view('weer');
 });
-
+Route::get('edit', function () {
+    return view('edit');
+});
 
 Auth::routes();
 
