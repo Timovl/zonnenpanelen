@@ -4,6 +4,10 @@
     $verbruik = \App\Verbruik::latest('id')->get();
     $vuurstatus = \App\Fire::latest('id')->get();
     $vuur = $vuurstatus[0]->on;
+
+//    $page = $_SERVER['PHP_SELF'];
+//    $sec = "60";
+//    header("Refresh: $sec; url=$page/dashboard");
 ?>
 
 @extends('layouts.layout')
@@ -18,6 +22,7 @@
         <div class="card" style="width: 18rem; background-color: lightgreen">
             <div class="card-body">
                 <h5 class="card-title">Totale winst {{ $year }}</h5>
+                <hr>
                 <p class="card-text">De totale winst bedraagt {{ $winst[0]->winst }}€</p>
             </div>
         </div>
@@ -25,12 +30,14 @@
         <div class="card mt-5" style="width: 18rem; background-color: lightgreen">
             <div class="card-body">
                 <h5 class="card-title">Totale verbruik</h5>
+                <hr>
                 <p class="card-text">Het verbruik bedraagt {{ $verbruik[0]->verbruik }} kwh</p>
             </div>
         </div>
         <div class="card mt-5" style="width: 18rem; @if($vuur == true) background-color: lightgreen @else background-color: red @endif">
             <div class="card-body">
                 <h5 class="card-title">Vuur</h5>
+                <hr>
                 <p class="card-text">Het het vuur staat @if($vuur == true) aan @else uit @endif</p>
             </div>
         </div>
@@ -58,14 +65,32 @@
         $jsondata = json_decode($jsonfile);
         $temp = ($jsondata->main->temp) - 273.15;
         $humidity = $jsondata->weather[0]->description;
+        $sr = $jsondata->sys->sunrise;
+        $sunrise = gmdate("H:i:s", $sr);
+        $ss = $jsondata->sys->sunset;
+        $sunset = gmdate("H:i:s", $ss);
+        $act = $sr - $ss;
+        $actief = gmdate("H:i:s", $act);
 
         ?>
 
-        <div class="card mt-5" style="width: 18rem; @if($vuur == true) background-color: lightgreen @else background-color: red @endif">
+        <div class="card mt-5" style="width: 18rem; background-color: lightgreen">
             <div class="card-body">
                 <h5 class="card-title">Weer</h5>
+                <hr>
                 <p class="card-text">De huidige temperatuur is {{ $temp }}°C</p>
-                <p class="card-text">De weersomstandigheid is {{ $humidity }}</p>
+                <p class="card-text">De weersomstandigheid is: {{ $humidity }}</p>
+            </div>
+        </div>
+
+
+        <div class="card mt-5" style="width: 18rem; background-color: lightgreen">
+            <div class="card-body">
+                <h5 class="card-title">Zon</h5>
+                <hr>
+                <p class="card-text">De zon is om {{ $sunrise }} opgekomen</p>
+                <p class="card-text">De zon gaat onder om {{ $sunset }}</p>
+                <p class="card-text">De zonnepanelen zijn {{ gmdate("H", $act) }} uur en {{ gmdate("i", $act) }} minuten actief</p>
             </div>
         </div>
     </div>

@@ -24,7 +24,7 @@
                         {{ auth()->user()->name }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="dashboard"><i class="fas fa-user-cog"></i>Mijn dashbord</a>
+                        <a class="dropdown-item" href="dashboard"><i class="fas fa-user-cog"></i>Mijn dashboard</a>
                         <div class="dropdown-divider"></div>
                         <form action="/logout" method="post">
                             @csrf
