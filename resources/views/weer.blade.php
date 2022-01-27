@@ -9,9 +9,17 @@ $page = $_SERVER['PHP_SELF'];
 $sec = "60";
 header("Refresh: $sec; url=$page/weer");
 ?>
+<?php
+
+    if (isset($_GET["locatie"])) {
+        $locatie = ($_GET['locatie']);
+    } else {
+        $locatie = "geel";
+    }
+?>
 
 <?php
-    $jsonfile = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=GEEL,be&APPID=3549103ef3613a207b01cf22509d8d84");
+    $jsonfile = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=" . $locatie . ",be&APPID=3549103ef3613a207b01cf22509d8d84");
     $jsondata = json_decode($jsonfile);
     $temp = ($jsondata->main->temp) - 273.15;
     $humidity = $jsondata->weather[0]->description;
@@ -21,7 +29,7 @@ header("Refresh: $sec; url=$page/weer");
     $sunset = gmdate("H:i:s", $ss);
     $act = $sr - $ss;
     $actief = gmdate("H:i:s", $act);
-    $locatie = $jsondata->name;
+
 
 
 ?>
@@ -33,7 +41,12 @@ header("Refresh: $sec; url=$page/weer");
 @endsection
 @section('main')
     <h1>Weersverwachtingen</h1>
-    <p> weersverwachtingen voor {{ $locatie }}</p>
+    <p> weersverwachtingen voor {{ $locatie ?? '' }}:</p>
+    <form method="get">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Verander locatie</label>
+            <input type="text" class="form-control" id="locatie" name="locatie" placeholder="Locatie">
+        </div>
     {{--    opbrengst--}}
     <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
         <div class="card mt-5" style="width: 18rem; background-color: lightgreen">
