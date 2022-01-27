@@ -14,11 +14,41 @@ namespace App{
 /**
  * App\Fire
  *
+ * @property int $id
+ * @property int $on
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Fire newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Fire newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Fire query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Fire whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Fire whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Fire whereOn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Fire whereUpdatedAt($value)
  */
 	class Fire extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\Genre
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Genre newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Genre newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Genre query()
+ */
+	class Genre extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\Location
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Location newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Location newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Location query()
+ */
+	class Location extends \Eloquent {}
 }
 
 namespace App{
@@ -48,5 +78,43 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
 	class User extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\Verbruik
+ *
+ * @property int $id
+ * @property float $verbruik
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Verbruik newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Verbruik newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Verbruik query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Verbruik whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Verbruik whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Verbruik whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Verbruik whereVerbruik($value)
+ */
+	class Verbruik extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\Winst
+ *
+ * @property int $id
+ * @property float $winst
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Winst newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Winst newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Winst query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Winst whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Winst whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Winst whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Winst whereWinst($value)
+ */
+	class Winst extends \Eloquent {}
 }
 

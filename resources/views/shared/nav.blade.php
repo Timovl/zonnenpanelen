@@ -18,6 +18,7 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="dashboard"><i class="fas fa-chart-line"></i> Mijn dashboard</a>
                         <a class="dropdown-item" href="weer"><i class="fas fa-temperature-high"></i> Weersverwachtingen</a>
+                        <a class="dropdown-item" href="data"><i class="fas fa-database"></i> Data</a>
                         <a class="dropdown-item" href="edit"><i class="fas fa-user-edit"></i> Gebruiker aanpassen</a>
                         <div class="dropdown-divider"></div>
                         <form action="/logout" method="post">
@@ -30,15 +31,20 @@
             @endauth
         </ul>
 
+
+        @guest
             <ul class="navbar-nav ml-auto">
-                @guest
+                    <li class="nav-item text-left">
+                        <a class="nav-link" href="weer"><i class="fas fa-temperature-high"></i> Weersverwachtingen</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i>Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/register"><i class="fas fa-signature"></i>Register</a>
                     </li>
-                @endguest
             </ul>
+        @endguest
+
     </div>
 </nav>

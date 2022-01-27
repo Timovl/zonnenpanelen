@@ -28,6 +28,9 @@ Route::get('weer', function () {
 Route::get('edit', function () {
     return view('edit');
 });
+Route::get('data', function () {
+    return view('data');
+});
 
 Auth::routes();
 
