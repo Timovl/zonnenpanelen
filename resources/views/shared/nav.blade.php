@@ -11,10 +11,10 @@
             </li>
             @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i>Login</a>
+                    <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/register"><i class="fas fa-signature"></i>Register</a>
+                    <a class="nav-link" href="/register"><i class="fas fa-signature"></i> Register</a>
                 </li>
             @endguest
 
@@ -25,6 +25,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="dashboard"><i class="fas fa-user-cog"></i>Mijn dashboard</a>
+                        <a class="dropdown-item" href="weer"><i class="fas fa-user-cog"></i>Weersverwachtingen</a>
                         <div class="dropdown-divider"></div>
                         <form action="/logout" method="post">
                             @csrf

@@ -5,9 +5,9 @@
     $vuurstatus = \App\Fire::latest('id')->get();
     $vuur = $vuurstatus[0]->on;
 
-//    $page = $_SERVER['PHP_SELF'];
-//    $sec = "60";
-//    header("Refresh: $sec; url=$page/dashboard");
+    $page = $_SERVER['PHP_SELF'];
+    $sec = "60";
+    header("Refresh: $sec; url=$page/dashboard");
 ?>
 
 @extends('layouts.layout')
@@ -21,7 +21,7 @@
     <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
         <div class="card" style="width: 18rem; background-color: lightgreen">
             <div class="card-body">
-                <h5 class="card-title">Totale winst {{ $year }}</h5>
+                <h5 class="card-title">Totale winst {{ $year }} <i class="fas fa-search-dollar"></i></h5>
                 <hr>
                 <p class="card-text">De totale winst bedraagt {{ $winst[0]->winst }}€</p>
             </div>
@@ -29,69 +29,17 @@
         {{--    totaal verbruik--}}
         <div class="card mt-5" style="width: 18rem; background-color: lightgreen">
             <div class="card-body">
-                <h5 class="card-title">Totale verbruik</h5>
+                <h5 class="card-title">Totale verbruik <i class="fas fa-bolt"></i></h5>
                 <hr>
                 <p class="card-text">Het verbruik bedraagt {{ $verbruik[0]->verbruik }} kwh</p>
             </div>
         </div>
         <div class="card mt-5" style="width: 18rem; @if($vuur == true) background-color: lightgreen @else background-color: red @endif">
             <div class="card-body">
-                <h5 class="card-title">Vuur</h5>
+                <h5 class="card-title">Vuur @if($vuur == true) <i class="fab fa-hotjar"></i>@else <i class="fas fa-snowflake"></i> @endif</h5>
                 <hr>
                 <p class="card-text">Het het vuur staat @if($vuur == true) aan @else uit @endif</p>
             </div>
         </div>
 
-    <?php
-//    $url = "http://api.openweathermap.org/data/2.5/weather?q=GEEL,be&APPID=3549103ef3613a207b01cf22509d8d84";
-//
-//    $curl = curl_init($url);
-//    curl_setopt($curl, CURLOPT_URL, $url);
-//    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-//
-//    $headers = array(
-//        "Accept: application/json",
-//    );
-//    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-//    //for debug only!
-//    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-//    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-//
-//    $resp = curl_exec($curl);
-//    curl_close($curl);
-//    var_dump($resp);
-
-        $jsonfile = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=GEEL,be&APPID=3549103ef3613a207b01cf22509d8d84");
-        $jsondata = json_decode($jsonfile);
-        $temp = ($jsondata->main->temp) - 273.15;
-        $humidity = $jsondata->weather[0]->description;
-        $sr = $jsondata->sys->sunrise;
-        $sunrise = gmdate("H:i:s", $sr);
-        $ss = $jsondata->sys->sunset;
-        $sunset = gmdate("H:i:s", $ss);
-        $act = $sr - $ss;
-        $actief = gmdate("H:i:s", $act);
-
-        ?>
-
-        <div class="card mt-5" style="width: 18rem; background-color: lightgreen">
-            <div class="card-body">
-                <h5 class="card-title">Weer</h5>
-                <hr>
-                <p class="card-text">De huidige temperatuur is {{ $temp }}°C</p>
-                <p class="card-text">De weersomstandigheid is: {{ $humidity }}</p>
-            </div>
-        </div>
-
-
-        <div class="card mt-5" style="width: 18rem; background-color: lightgreen">
-            <div class="card-body">
-                <h5 class="card-title">Zon</h5>
-                <hr>
-                <p class="card-text">De zon is om {{ $sunrise }} opgekomen</p>
-                <p class="card-text">De zon gaat onder om {{ $sunset }}</p>
-                <p class="card-text">De zonnepanelen zijn {{ gmdate("H", $act) }} uur en {{ gmdate("i", $act) }} minuten actief</p>
-            </div>
-        </div>
-    </div>
 @endsection

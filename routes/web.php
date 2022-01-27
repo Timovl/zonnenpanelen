@@ -19,7 +19,9 @@ Route::get('/', function () {
 Route::get('dashboard', function () {
     return view('dashboard');
 });
-
+Route::get('weer', function () {
+    return view('weer');
+});
 
 
 Auth::routes();
