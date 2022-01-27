@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/"><i class="fas fa-house-user"></i> Home <span class="sr-only">(current)</span></a>
             </li>
             @guest
                 <li class="nav-item">
@@ -21,11 +21,11 @@
             @auth
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#!" data-toggle="dropdown">
-                        {{ auth()->user()->name }} <span class="caret"></span>
+                        <i class="fas fa-address-card"></i> {{ auth()->user()->name }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="dashboard"><i class="fas fa-user-cog"></i>Mijn dashboard</a>
-                        <a class="dropdown-item" href="weer"><i class="fas fa-user-cog"></i>Weersverwachtingen</a>
+                        <a class="dropdown-item" href="dashboard"><i class="fas fa-chart-line"></i> Mijn dashboard</a>
+                        <a class="dropdown-item" href="weer"><i class="fas fa-temperature-high"></i> Weersverwachtingen</a>
                         <div class="dropdown-divider"></div>
                         <form action="/logout" method="post">
                             @csrf

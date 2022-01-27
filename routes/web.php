@@ -19,6 +19,9 @@ Route::get('/', function () {
 Route::get('dashboard', function () {
     return view('dashboard');
 });
+Route::post('dashboard', function () {
+    return view('dashboard/{id}');
+});
 Route::get('weer', function () {
     return view('weer');
 });

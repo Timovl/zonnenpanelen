@@ -39,7 +39,36 @@
                 <h5 class="card-title">Vuur @if($vuur == true) <i class="fab fa-hotjar"></i>@else <i class="fas fa-snowflake"></i> @endif</h5>
                 <hr>
                 <p class="card-text">Het het vuur staat @if($vuur == true) aan @else uit @endif</p>
+                @if ($vuur == true)
+                    <form method="get"  action="dashboard">
+                        <button name="on" class="btn btn-danger btn-sm" type="submit">Vuur uit <i class="fas fa-toggle-off"></i></button>
+                    </form>
+                @else
+                    <form method="get"  action="dashboard">
+                        <button name="off" class="btn btn-success btn-sm" type="submit">Vuur aan <i class="fas fa-toggle-on iconcolor"></i></button>
+                    </form>
+                @endif
             </div>
         </div>
+    <?php
+        if (isset($_GET["on"])) {
+            $vuur = new \App\Fire();
+            $vuur->on = false;
+            $vuur->save();
+            $page = $_SERVER['PHP_SELF'];
+            $sec = "1";
+            header("Refresh: $sec; url=$page/dashboard");
+
+        }
+        elseif (isset($_GET["off"])) {
+            $vuur = new \App\Fire();
+            $vuur->on = true;
+            $vuur->save();
+            $page = $_SERVER['PHP_SELF'];
+            $sec = "1";
+            header("Refresh: $sec; url=$page/dashboard");
+
+        }
+    ?>
 
 @endsection
