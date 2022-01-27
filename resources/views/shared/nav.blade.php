@@ -9,14 +9,6 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/"><i class="fas fa-house-user"></i> Home <span class="sr-only">(current)</span></a>
             </li>
-            @guest
-                <li class="nav-item">
-                    <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/register"><i class="fas fa-signature"></i> Register</a>
-                </li>
-            @endguest
 
             @auth
                 <li class="nav-item dropdown">
@@ -35,6 +27,18 @@
 
                     </div>
                 </li>
-        @endauth
+            @endauth
+        </ul>
+
+            <ul class="navbar-nav ml-auto">
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i>Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register"><i class="fas fa-signature"></i>Register</a>
+                    </li>
+                @endguest
+            </ul>
     </div>
 </nav>
