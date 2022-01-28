@@ -10962,3 +10962,10 @@ a.text-dark:focus {
   }
 }
 
+.bg-edit {
+  border-style: solid;
+  border-color: #ededed;
+  background-color: #ededed;
+  border-radius: 10px;
+}
+

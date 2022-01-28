@@ -9,6 +9,8 @@
     <div>
         <h1>{{ auth()->user()->name }} aanpassen</h1>
     </div>
+
+    <div class="bg-edit">
         <form action="" method="get">
         @csrf
         <div class="form-group">
@@ -34,6 +36,7 @@
         </div>
         <button name="submit" class="btn btn-success" type="submit">Update Gebruiker</button>
     </form>
+    </div>
     <?php
         if (isset($_GET["submit"])) {
             $user = \App\User::findOrFail(auth()->id());

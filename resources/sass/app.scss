@@ -7,3 +7,13 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// main
+
+.bg-edit {
+    border-style: solid;
+    border-color: $lightgray;
+    background-color: $lightgray;
+    border-radius: 10px;
+
+}
