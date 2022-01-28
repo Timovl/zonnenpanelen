@@ -16,21 +16,27 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('dashboard', function () {
-    return view('dashboard');
-});
+
 Route::post('dashboard', function () {
     return view('dashboard/{id}');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard', function () {
+        return view('dashboard');
+    });
+    Route::get('edit', function () {
+        return view('edit');
+    });
+    Route::get('data', function () {
+        return view('data');
+    });
 });
 Route::get('weer', function () {
     return view('weer');
 });
-Route::get('edit', function () {
-    return view('edit');
-});
-Route::get('data', function () {
-    return view('data');
-});
+
+
 
 Auth::routes();
 
