@@ -31,7 +31,7 @@
                     <h5 class="card-title">Zonnenpanelen <i class="fas fa-solar-panel"></i></h5>
                     <hr>
                     <p class="card-text">De dichteid van de wolken is {{ $wolk }}%</p>
-                    <p class="card-text">Status van de zonnepanelen: @if($wolk == 100) inactief @elseif($wolk >= 75 && $wolk != 100) minimale activiteit @elseif($wolk < 75 && $wolk >= 50) nauwlijks actief @elseif($wolk <= 50 && $wolk >= 25) acief @elseif($wolk < 25 && $wolk != 0) goed gebruik @elseif($wolk == 0) optimaal gebruik @endif</p>
+                    <p class="card-text">Status van de zonnepanelen: @if($wolk == 100) inactief @elseif($wolk >= 75 && $wolk != 100) minimale activiteit @elseif($wolk < 75 && $wolk >= 50) nauwlijks actief @elseif($wolk <= 50 && $wolk >= 25) acief @elseif($wolk < 25 && $wolk != 0) goede opbrengst @elseif($wolk == 0) optimale opbrengst @endif</p>
                 </div>
             </div>
         </div>

@@ -1,9 +1,9 @@
 <?php
-$year = date("Y");
-$winst = \App\Winst::latest('id')->get();
-$verbruik = \App\Verbruik::latest('id')->get();
-$vuurstatus = \App\Fire::latest('id')->get();
-$vuur = $vuurstatus[0]->on;
+    $year = date("Y");
+    $winst = \App\Winst::latest('id')->get();
+    $verbruik = \App\Verbruik::latest('id')->get();
+    $vuurstatus = \App\Fire::latest('id')->get();
+    $vuur = $vuurstatus[0]->on;
 
 ?>
 <?php
