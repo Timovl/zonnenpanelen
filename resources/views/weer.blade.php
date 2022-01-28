@@ -28,7 +28,7 @@ $vuur = $vuurstatus[0]->on;
     $sunrise = gmdate("H:i:s", $sr);
     $ss = $jsondata->sys->sunset;
     $sunset = gmdate("H:i:s", $ss);
-    $act = $sr - $ss;
+    $act = $ss - $sr;
     $actief = gmdate("H:i:s", $act);
 
 
