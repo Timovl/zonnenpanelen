@@ -1,14 +1,13 @@
 <?php
-    $year = date("Y");
-    $winst = \App\Winst::latest('id')->get();
-    $verbruik = \App\Verbruik::latest('id')->get();
-    $vuurstatus = \App\Fire::latest('id')->get();
-    $vuur = $vuurstatus[0]->on;
-    $locatie = \App\Location::latest('id')->get();
-
-    $page = $_SERVER['PHP_SELF'];
-    $sec = "60";
-    header("Refresh: $sec; url=$page/dashboard");
+$year = date("Y");
+$winst = \App\Winst::latest('id')->get();
+$verbruik = \App\Verbruik::latest('id')->get();
+$vuurstatus = \App\Fire::latest('id')->get();
+$vuur = $vuurstatus[0]->on;
+$locatie = \App\Location::latest('id')->get();
+$page = $_SERVER['PHP_SELF'];
+$sec = "60";
+header("Refresh: $sec; url=$page/dashboard");
 ?>
 
 @extends('layouts.layout')
@@ -55,24 +54,22 @@
         </div>
     </div>
     <?php
-        if (isset($_GET["on"])) {
-            $vuur = new \App\Fire();
-            $vuur->on = false;
-            $vuur->save();
-            $page = $_SERVER['PHP_SELF'];
-            $sec = "1";
-            header("Refresh: $sec; url=$page/dashboard");
-
-        }
-        elseif (isset($_GET["off"])) {
-            $vuur = new \App\Fire();
-            $vuur->on = true;
-            $vuur->save();
-            $page = $_SERVER['PHP_SELF'];
-            $sec = "1";
-            header("Refresh: $sec; url=$page/dashboard");
-
-        }
+    if (isset($_GET["on"])) {
+        $vuur = new \App\Fire();
+        $vuur->on = false;
+        $vuur->save();
+        $page = $_SERVER['PHP_SELF'];
+        $sec = "1";
+        header("Refresh: $sec; url=$page/dashboard");
+    }
+    elseif (isset($_GET["off"])) {
+        $vuur = new \App\Fire();
+        $vuur->on = true;
+        $vuur->save();
+        $page = $_SERVER['PHP_SELF'];
+        $sec = "1";
+        header("Refresh: $sec; url=$page/dashboard");
+    }
     ?>
 
 @endsection
