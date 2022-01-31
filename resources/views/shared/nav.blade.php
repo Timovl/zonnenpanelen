@@ -18,7 +18,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="dashboard"><i class="fas fa-chart-line"></i> Mijn dashboard</a>
-                        <a class="dropdown-item" href="data"><i class="fas fa-database"></i> Data</a>
+{{--                        <a class="dropdown-item" href="data"><i class="fas fa-database"></i> Data</a>--}}
                         @if(!$user->set)
                             <a class="dropdown-item" href="gegevens"><i class="fas fa-file-signature"></i> Gegevens</a>
                         @else

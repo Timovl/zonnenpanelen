@@ -17,8 +17,8 @@
         $loc->user_id = $user->id;
         $loc->save();
     } else {
-        $loc = \App\Location::latest('id')->get();
-        $locatie = $loc[0]->location;
+        $oldloc = \App\Location::orderBy('id','desc')->where('user_id', $user->id)->get();
+        $locatie = $oldloc[0]->location;
     }
 ?>
 
