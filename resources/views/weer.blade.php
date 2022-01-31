@@ -4,6 +4,7 @@
     $verbruik = \App\Verbruik::latest('id')->get();
     $vuurstatus = \App\Fire::latest('id')->get();
     $vuur = $vuurstatus[0]->on;
+    $user = \App\User::findOrFail(auth()->id());
 
 
 ?>
@@ -13,6 +14,7 @@
         $locatie = ($_GET['locatie']);
         $loc = new \App\Location();
         $loc->location = $locatie;
+        $loc->user_id = $user->id;
         $loc->save();
     } else {
         $loc = \App\Location::latest('id')->get();

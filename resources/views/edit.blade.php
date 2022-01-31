@@ -5,6 +5,10 @@
 @section('main')
     <?php
         $olduser = \App\User::findOrFail(auth()->id());
+        $oldpanelen = \App\ZonnepanelenExtra::findOrFail(auth()->id());
+        $oldloc = \App\Location::orderBy('id','desc')->where('user_id', $olduser->id)->get();
+        $oldloc = $oldloc[0];
+
     ?>
     <div>
         <h1>{{ auth()->user()->name }} aanpassen</h1>
@@ -34,12 +38,29 @@
                    placeholder="{{ $olduser->password }}"
                    value="{{ old('ww') }}">
         </div>
+
+            <div class="form-group">
+                <label for="panelen">Aantal zonnepanelen</label>
+                <input type="text" name="panelen" id="panelen"
+                       class="form-control"
+                       placeholder="{{ $oldpanelen->zonnepanelen }}"
+                       value="{{ old('panelen') }}">
+            </div>
+            <div class="form-group">
+                <label for="loc">Locatie</label>
+                <input type="text" name="loc" id="loc"
+                       class="form-control"
+                       placeholder="{{ $oldloc->location }}"
+                       value="{{ old('loc') }}">
+            </div>
         <button name="submit" class="btn btn-success" type="submit">Update Gebruiker</button>
     </form>
     </div>
     <?php
         if (isset($_GET["submit"])) {
             $user = \App\User::findOrFail(auth()->id());
+            $location = \App\Location::findOrFail($oldloc->id);
+            $panelen = \App\ZonnepanelenExtra::findOrFail(auth()->id());
             if ($_GET['name']) {
                 $user->name = $_GET['name'];
             } else {
@@ -55,7 +76,14 @@
             } else {
                 $user->password = Hash::make($olduser->password);
             }
-
+            if ($_GET['loc']) {
+                $location->location = $_GET['loc'];
+                $location->save();
+            }
+            if ($_GET['panelen']) {
+                $panelen->zonnepanelen = $_GET['panelen'];
+                $panelen->save();
+            }
 
             $user->save();
 
