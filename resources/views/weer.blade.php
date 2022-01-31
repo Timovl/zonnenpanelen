@@ -5,6 +5,7 @@
     $vuurstatus = \App\Fire::latest('id')->get();
     $vuur = $vuurstatus[0]->on;
 
+
 ?>
 <?php
 
@@ -30,6 +31,7 @@
     $sunset = gmdate("H:i:s", $ss);
     $act = $ss - $sr;
     $actief = gmdate("H:i:s", $act);
+    $wolk = $jsondata->clouds->all;
 
 
 
@@ -101,6 +103,15 @@
                     @endif
                 </div>
             </div>
-        </div>
+
+            <div class="card mt-5" style="width: 18rem; background-color: lightgreen">
+                <div class="card-body">
+                    <h5 class="card-title">Zonnenpanelen <i class="fas fa-solar-panel"></i></h5>
+                    <hr>
+                    @if ($i)
+                        <p class="card-text">De dichteid van de wolken is {{ $wolk }}%</p>
+                        <p class="card-text">Status van de zonnepanelen: @if($wolk == 100) inactief <i class="far fa-sad-cry"></i> @elseif($wolk >= 75 && $wolk != 100) minimale activiteit <i class="far fa-frown"></i> @elseif($wolk < 75 && $wolk >= 50) nauwlijks actief <i class="far fa-meh"></i> @elseif($wolk <= 50 && $wolk >= 25) acief <i class="fas fa-smile"></i> @elseif($wolk < 25 && $wolk != 0) goede opbrengst <i class="fas fa-smile-beam"></i> @elseif($wolk == 0) optimale opbrengst <i class="fas fa-laugh-beam"></i>@endif</p>
+                    @endif
+            </div>
     </div>
 @endsection

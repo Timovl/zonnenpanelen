@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    @yield('script_before')
     <meta charset="UTF-8">
     <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <meta name="viewport"

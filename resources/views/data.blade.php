@@ -17,48 +17,58 @@
 
 
 @extends('layouts.layout')
+@section('script_before')
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </script>
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+
+                ['class Name','Students'],
+                <?php
+//                $con = mysqli_connect('localhost','homestead','secret','testchart');
+//                $query = "SELECT * from class";
+//
+//                $exec = mysqli_query($con,$query);
+//                while($row = mysqli_fetch_array($exec)){
+//
+//                    echo "['".$row['class_name']."',".$row['students']."],";
+//                }
+
+                    $loc = \App\Location::get();
+                    $locatie = $loc[0]->location;
+                    $id = $loc[0]->id;
+                    echo "['" . $locatie . "',". $id ."],";
+
+//               ?>
+
+            ]);
+
+            var options = {
+                title: '',
+                pieHole: 0.5,
+                pieSliceTextStyle: {
+                    color: 'black',
+                },
+                legend: 'none'
+            };
+            var chart = new google.visualization.PieChart(document.getElementById("columnchart12"));
+            chart.draw(data,options);
+        }
+
+    </script>
+@endsection
 @section('title')
-    Apparaten van {{ auth()->user()->name }}
+    Data van {{ auth()->user()->name }}
 @endsection
 @section('main')
-    <h1>Apparaten</h1>
-    <p> Apparaten van {{ auth()->user()->name }}</p>
 
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
-            <div class="card" style="width: 18rem; background-color: lightgreen">
-                <div class="card-body">
-                    <h5 class="card-title">Zonnenpanelen <i class="fas fa-solar-panel"></i></h5>
-                    <hr>
-                    <?php
-                        if (isset($_GET["buttonup"])) {
-                            $i = false;
-                        }
-                        elseif (isset($_GET["buttondown"])) {
-                            $i = true;
-                        }
-                        else {
-                            $i = true;
-                        }
-                    ?>
-                    @if ($i)
-                        <p class="card-text">De dichteid van de wolken is {{ $wolk }}%</p>
-                        <p class="card-text">Status van de zonnepanelen: @if($wolk == 100) inactief <i class="far fa-sad-cry"></i> @elseif($wolk >= 75 && $wolk != 100) minimale activiteit <i class="far fa-frown"></i> @elseif($wolk < 75 && $wolk >= 50) nauwlijks actief <i class="far fa-meh"></i> @elseif($wolk <= 50 && $wolk >= 25) acief <i class="fas fa-smile"></i> @elseif($wolk < 25 && $wolk != 0) goede opbrengst <i class="fas fa-smile-beam"></i> @elseif($wolk == 0) optimale opbrengst <i class="fas fa-laugh-beam"></i>@endif</p>
-                        <div class="card-text">
-                            <form action="#" method="get">
-                                <button class="bg-success btn-success" type="submit" name="buttonup" id="buttonup"><i class="fas fa-arrow-circle-up"></i></button>
-                            </form>
-                        </div>
-                    @else
-                        <div class="card-text">
-                            <form action="#" method="get">
-                                <button class="bg-success btn-success" type="submit" name="buttondown" id="buttondown"><i class="fas fa-arrow-circle-down"></i></button>
-                            </form>
-                        </div>
-                    @endif
+    <div id="columnchart12" style="width: 100%; height: 500px;"></div>
 
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection

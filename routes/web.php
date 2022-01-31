@@ -28,9 +28,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('edit', function () {
         return view('edit');
     });
-    Route::get('data', function () {
-        return view('data');
-    });
+//    Route::get('data', function () {
+//        return view('data');
+//    });
 });
 Route::get('weer', function () {
     return view('weer');
