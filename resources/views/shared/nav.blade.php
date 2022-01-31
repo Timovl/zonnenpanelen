@@ -9,15 +9,22 @@
         <ul class="navbar-nav ml-auto">
 
             @auth
+                <?php
+                    $user = \App\User::findOrFail(auth()->id())
+                ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#!" data-toggle="dropdown">
                         <i class="fas fa-address-card"></i> {{ auth()->user()->name }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="dashboard"><i class="fas fa-chart-line"></i> Mijn dashboard</a>
-                        <a class="dropdown-item" href="weer"><i class="fas fa-temperature-high"></i> Weersverwachtingen</a>
                         <a class="dropdown-item" href="data"><i class="fas fa-database"></i> Data</a>
-                        <a class="dropdown-item" href="edit"><i class="fas fa-user-edit"></i> Gebruiker aanpassen</a>
+                        @if(!$user->set)
+                            <a class="dropdown-item" href="gegevens"><i class="fas fa-file-signature"></i> Gegevens</a>
+                        @else
+                            <a class="dropdown-item" href="weer"><i class="fas fa-temperature-high"></i> Weersverwachtingen</a>
+                            <a class="dropdown-item" href="edit"><i class="fas fa-user-edit"></i> Gebruiker aanpassen</a>
+                        @endif
                         <div class="dropdown-divider"></div>
                         <form action="/logout" method="post">
                             @csrf
@@ -32,9 +39,6 @@
 
         @guest
             <ul class="navbar-nav ml-auto">
-                    <li class="nav-item text-left">
-                        <a class="nav-link" href="weer"><i class="fas fa-temperature-high"></i> Weersverwachtingen</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i>Login</a>
                     </li>

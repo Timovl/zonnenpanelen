@@ -17,6 +17,13 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('gegevens', function () {
+    return view('gegevens');
+});
+Route::post('gegevens', function () {
+    return view('gegevens');
+});
+
 Route::post('dashboard', function () {
     return view('dashboard/{id}');
 });

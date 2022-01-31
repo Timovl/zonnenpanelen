@@ -53,6 +53,13 @@
                        placeholder="{{ $oldloc->location }}"
                        value="{{ old('loc') }}">
             </div>
+            <div class="form-group">
+                <label for="piek">Piekuur</label>
+                <input type="text" name="piek" id="piek"
+                       class="form-control"
+                       placeholder="{{ $oldpanelen->piekuur }}"
+                       value="{{ old('piek') }}">
+            </div>
         <button name="submit" class="btn btn-success" type="submit">Update Gebruiker</button>
     </form>
     </div>
@@ -84,7 +91,10 @@
                 $panelen->zonnepanelen = $_GET['panelen'];
                 $panelen->save();
             }
-
+            if ($_GET['piek']) {
+                $panelen->piekuur = $_GET['piek'];
+                $panelen->save();
+            }
             $user->save();
 
             $page = $_SERVER['PHP_SELF'];

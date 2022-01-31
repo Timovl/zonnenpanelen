@@ -26,14 +26,6 @@ class CreateZonnepanelenExtrasTable extends Migration
             $table->foreign("location_id")->references('id')->on('locations')->onDelete('cascade')->onUpdate('cascade');
 
         });
-        DB::table('zonnepanelen_extras')->insert(
-            [
-                'created_at' => now(),
-                'user_id' => 1,
-                'location_id' => 1,
-                'piekuur' => 12,
-                'zonnepanelen' => 4,
-            ]);
     }
 
     /**

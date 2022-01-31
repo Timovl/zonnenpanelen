@@ -39,6 +39,34 @@
                             </div>
                         </div>
 
+{{--                        <div class="form-group row">--}}
+{{--                            <label for="loc" class="col-md-4 col-form-label text-md-right">Locatie</label>--}}
+
+{{--                            <div class="col-md-6">--}}
+{{--                                <input id="loc" type="text" class="form-control @error('loc') is-invalid @enderror" name="loc" value="{{ old('loc') }}" required autocomplete="loc">--}}
+
+{{--                                @error('loc')--}}
+{{--                                <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                @enderror--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+{{--                        <div class="form-group row">--}}
+{{--                            <label for="panelen" class="col-md-4 col-form-label text-md-right">Aantal panelen</label>--}}
+
+{{--                            <div class="col-md-6">--}}
+{{--                                <input id="panelen" type="text" class="form-control @error('panelen') is-invalid @enderror" name="panelen" value="{{ old('panelen') }}" required autocomplete="loc">--}}
+
+{{--                                @error('panelen')--}}
+{{--                                <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                @enderror--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -63,7 +91,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button name="submit" type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -74,4 +102,20 @@
         </div>
     </div>
 </div>
+<!--    --><?php
+//        if (isset($_GET["submit"])) {
+//            $user = \App\User::findOrFail(auth()->id());
+//            $locatie = ($_GET['loc']);
+//            $loc = new \App\Location();
+//            $loc->location = $locatie;
+//            $loc->user_id = $user->id;
+//            $loc->save();
+//            $panelen = $_GET['panelen'];
+//            $pan = new \App\ZonnepanelenExtra();
+//            $pan->zonnepanelen = $panelen;
+//            $pan->user_id = $user->id;
+//            $pan->location_id = $loc->id;
+//            $pan->save();
+//        }
+//    ?>
 @endsection
